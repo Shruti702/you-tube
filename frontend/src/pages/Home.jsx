@@ -2,18 +2,55 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useSearchParams } from "react-router-dom";
 
+//Helper Functions.
+//Formats view counts into readable strings.
+const formatViews = (num) => {
+  if (num >= 1000000000) return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
+  if (num >= 1000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+  return num;
+};
+
+//Calculates "Time Ago" (e.g., "2 days ago") from a timestamp.
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const now = new Date();
+  const seconds = Math.floor((now - date) / 1000);
+  
+  let interval = Math.floor(seconds / 31536000);
+  if (interval >= 1) return interval + (interval === 1 ? " year ago" : " years ago");
+  
+  interval = Math.floor(seconds / 2592000);
+  if (interval >= 1) return interval + (interval === 1 ? " month ago" : " months ago");
+  
+  interval = Math.floor(seconds / 86400);
+  if (interval >= 1) return interval + (interval === 1 ? " day ago" : " days ago");
+  
+  interval = Math.floor(seconds / 3600);
+  if (interval >= 1) return interval + (interval === 1 ? " hour ago" : " hours ago");
+  
+  interval = Math.floor(seconds / 60);
+  if (interval >= 1) return interval + (interval === 1 ? " minute ago" : " minutes ago");
+  
+  return "Just now";
+};
+// ------------------------
+
 const Home = () => {
-  const [videos, setVideos] = useState([]);
-  const [filteredVideos, setFilteredVideos] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [videos, setVideos] = useState([]); //Stores raw data from API.
+  const [filteredVideos, setFilteredVideos] = useState([]); //Stores data currently displayed (after category filter).
+  const [selectedCategory, setSelectedCategory] = useState("All"); //Tracks active category button.
+  //This hook grabs the search value from the URL bar.
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("search");
 
+  //Filter categories.
   const categories = [
     "All", "Movies", "Gaming", "Sports", "Cars", 
     "Technology", "Animation", "Comedy"
   ];
 
+  //Fetched Videos.
   useEffect(() => {
     const fetchVideos = async () => {
       try {
@@ -22,6 +59,7 @@ const Home = () => {
           : "http://localhost:5000/api/videos";
           
         const res = await axios.get(url);
+        //Updates both states initially.
         setVideos(res.data);
         setFilteredVideos(res.data);
       } catch (err) {
@@ -31,10 +69,12 @@ const Home = () => {
     fetchVideos();
   }, [searchQuery]);
 
+  //Runs whenever the user clicks a category button OR the video list updates.
   useEffect(() => {
     if (selectedCategory === "All") {
       setFilteredVideos(videos);
     } else {
+      //Filters the existing 'videos' array based on the category field.
       const filtered = videos.filter(video => {
         if (video.category && Array.isArray(video.category)) {
             return video.category.includes(selectedCategory);
@@ -47,6 +87,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
+        {/* Category Filter Bar */}
       <div className="filter-bar">
         {categories.map((category) => (
           <button
@@ -59,6 +100,7 @@ const Home = () => {
         ))}
       </div>
 
+      {/* Video Grid Layout */}
       <div className="video-grid">
         {filteredVideos.length > 0 ? (
             filteredVideos.map((video) => (
@@ -70,12 +112,15 @@ const Home = () => {
                     <div className="video-details">
                     <h4>{video.title}</h4>
                     <p>{video.uploader}</p>
+                    {/* Displays the view count and upload date. */}
+                    <p>{formatViews(video.views)} views • {formatDate(video.uploadDate)}</p>
                     </div>
                 </div>
                 </div>
             </Link>
             ))
         ) : (
+            //Displayed if search/filter results in zero videos.
             <div style={{gridColumn: '1/-1', textAlign: 'center', marginTop: '40px', color: '#606060'}}>
                 <p>No videos found for "<b>{selectedCategory}</b>"</p>
                 <button 

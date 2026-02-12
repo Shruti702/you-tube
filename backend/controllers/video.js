@@ -1,5 +1,18 @@
 import Video from "../models/Video.js";
 
+//Gets all videos when searched.
+export const getAllVideos = async (req, res) => {
+  try {
+    const query = req.query.search 
+      ? { title: { $regex: req.query.search, $options: "i" } } 
+      : {};
+    const videos = await Video.find(query);
+    res.status(200).json(videos);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 export const getVideoById = async (req, res) => {
   try {
     //Finds the video using the ID passed in the URL parameters.

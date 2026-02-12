@@ -4,8 +4,15 @@ import { Link, useSearchParams } from "react-router-dom";
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
+  const [filteredVideos, setFilteredVideos] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("search");
+
+  const categories = [
+    "All", "Movies", "Gaming", "Sports", "Cars", 
+    "Technology", "Animation", "Comedy"
+  ];
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -24,8 +31,33 @@ const Home = () => {
     fetchVideos();
   }, [searchQuery]);
 
+  useEffect(() => {
+    if (selectedCategory === "All") {
+      setFilteredVideos(videos);
+    } else {
+      const filtered = videos.filter(video => {
+        if (video.category && Array.isArray(video.category)) {
+            return video.category.includes(selectedCategory);
+        }
+        return false;
+      });
+      setFilteredVideos(filtered);
+    }
+  }, [selectedCategory, videos]);
+
   return (
     <div className="home-container">
+      <div className="filter-bar">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
 
       <div className="video-grid">
         {filteredVideos.length > 0 ? (
@@ -45,7 +77,13 @@ const Home = () => {
             ))
         ) : (
             <div style={{gridColumn: '1/-1', textAlign: 'center', marginTop: '40px', color: '#606060'}}>
-                <p></p>
+                <p>No videos found for "<b>{selectedCategory}</b>"</p>
+                <button 
+                    onClick={() => setSelectedCategory("All")}
+                    style={{marginTop: '10px', color: '#065fd4', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline'}}
+                >
+                    Clear Filter
+                </button>
             </div>
         )}
       </div>

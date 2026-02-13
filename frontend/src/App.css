@@ -1,3 +1,6 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
 :root {
   --yt-red: #ff0000;
   --yt-black: #0f0f0f;
@@ -27,7 +30,9 @@ a {
   color: inherit;
 }
 
-/*Styling of the Navbar.*/
+/* =========================================
+   2. NAVBAR STYLING
+   ========================================= */
 .navbar {
   display: flex;
   align-items: center;
@@ -129,17 +134,20 @@ a {
   background-color: #f0f0f0;
 }
 
-/*Styling of the Home Page.*/
+
+/* =========================================
+   3. HOME PAGE (VIDEO GRID)
+   ========================================= */
 .home-container {
   padding: 24px;
-  max-width: 1800px; /*Prevent it from stretching too wide on huge screens.*/
+  max-width: 1800px; /* Prevent it from stretching too wide on huge screens */
   margin: 0 auto;
 }
 
 /* Responsive Grid */
 .video-grid {
   display: grid;
-  /*Auto-fill creates as many columns as fit with min-width of 300px.*/
+  /* Auto-fill creates as many columns as fit with min-width of 300px */
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   column-gap: 16px;
   row-gap: 40px;
@@ -154,17 +162,17 @@ a {
 }
 
 .video-card:hover .thumbnail {
-  border-radius: 0; /*Slight visual cue on hover.*/
+  border-radius: 0; /* Slight visual cue on hover */
   transform: scale(1.02);
   transition: transform 0.2s;
 }
 
 .thumbnail {
   width: 100%;
-  aspect-ratio: 16 / 9; /*Enforces standard video ratio.*/
+  aspect-ratio: 16 / 9; /* Enforce standard video ratio */
   object-fit: cover;
   border-radius: 12px;
-  background-color: #ddd; /*Loading placeholder color.*/
+  background-color: #ddd; /* Loading placeholder color */
   margin-bottom: 12px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
@@ -215,7 +223,231 @@ a {
   color: var(--yt-black);
 }
 
-/*Styling of the sidebar menu.*/
+
+/* =========================================
+   4. AUTH PAGES (LOGIN / REGISTER)
+   ========================================= */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 56px); /* Full height minus navbar */
+  background-color: #f0f2f5;
+}
+
+.auth-box {
+  background: white;
+  padding: 48px 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.auth-box h2 {
+  font-size: 24px;
+  margin-bottom: 24px;
+  font-weight: 500;
+  color: #202124;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* More breathing room */
+}
+
+/* Material Design Style Inputs */
+.auth-form input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  transition: border 0.2s;
+}
+
+.auth-form input:focus {
+  border: 2px solid var(--yt-blue);
+  outline: none;
+  padding: 13px 15px; /* Adjust padding to prevent shift due to border width change */
+}
+
+/* Primary Button */
+.auth-btn {
+  background-color: var(--yt-blue);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s;
+}
+
+.auth-btn:hover {
+  background-color: #0552b5;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* =========================================
+   5. VIDEO PLAYER PAGE
+   ========================================= */
+.video-container {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  width: 100%;
+}
+
+.primary-content {
+  width: 100%;
+  max-width: 900px;
+}
+
+.video-frame {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: black;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.video-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.video-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--yt-border);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--yt-light-gray);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 18px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.action-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.description {
+    background-color: var(--yt-light-gray);
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.comment-section {
+  margin-top: 24px;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid var(--yt-border);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: transparent;
+  font-size: 14px;
+}
+
+.comment-input:focus {
+    border-bottom: 2px solid var(--yt-black);
+    outline: none;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comment-item {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--yt-border);
+}
+
+/* =========================================
+   6. CHANNEL DASHBOARD
+   ========================================= */
+.channel-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--yt-border);
+}
+
+.upload-form {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--yt-border);
+}
+
+.video-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: white;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--yt-border);
+}
+
+.delete-btn {
+  background-color: #ffe6e6;
+  color: #cc0000;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.delete-btn:hover {
+    background-color: #ffcccc;
+}
+
+/* --- Sidebar Styles --- */
 .sidebar {
   width: 240px;
   background-color: white;
@@ -302,4 +534,924 @@ a {
 
 .menu-btn:hover {
   background-color: #f2f2f2;
+}
+
+/* =========================================
+   FILTER BAR STYLES
+   ========================================= */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  overflow-x: auto; /* Allows horizontal scrolling on small screens */
+  padding-bottom: 5px;
+  /* Hide scrollbar for cleaner look */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+.filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-btn {
+  padding: 8px 12px;
+  background-color: #f2f2f2; /* Light gray default */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap; /* Prevent text wrapping */
+  transition: all 0.2s ease;
+  color: #0f0f0f;
+}
+
+.filter-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.filter-btn.active {
+  background-color: #0f0f0f; /* Black when selected */
+  color: white;
+}
+
+/* Fix Avatar Size in Home (Optional but recommended) */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* =========================================
+   7. YOUTUBE STYLE VIDEO PLAYER LAYOUT
+   ========================================= */
+
+/* Main Two-Column Layout */
+.video-page-layout {
+  display: flex;
+  gap: 24px;
+  padding: 24px 24px 0 24px;
+  max-width: 1700px;
+  margin: 0 auto;
+  align-items: flex-start; /* Important for sidebar scrolling */
+}
+
+/* Left Column (Video) */
+.video-primary-column {
+  flex: 1; /* Takes remaining space */
+  min-width: 0; /* Prevents overflow issues */
+}
+
+/* Right Column (Sidebar) */
+.video-secondary-column {
+  width: 400px; /* Fixed width sidebar like YouTube */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Responsive: Stack on small screens */
+@media (max-width: 1000px) {
+  .video-page-layout {
+    flex-direction: column;
+  }
+  .video-secondary-column {
+    width: 100%;
+  }
+}
+
+/* --- Video Player & Info --- */
+.video-wrapper {
+  width: 100%;
+  background: black;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.video-frame {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: block;
+}
+
+.video-title-main {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0f0f0f;
+}
+
+/* --- Channel & Actions Row --- */
+.video-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.channel-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.channel-avatar-lg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.channel-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-name {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sub-count {
+  font-size: 12px;
+  color: #606060;
+}
+
+.subscribe-btn {
+  background-color: #0f0f0f;
+  color: white;
+  border: none;
+  padding: 0 16px;
+  height: 36px;
+  border-radius: 18px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+.subscribe-btn:hover {
+  background-color: #272727;
+}
+
+/* --- Pill Buttons (Like/Share/etc) --- */
+.video-actions-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-pill {
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  border-radius: 18px;
+  height: 36px;
+}
+
+.pill-btn {
+  background: none;
+  border: none;
+  padding: 0 16px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pill-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.pill-btn.left {
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+}
+
+.pill-btn.right {
+  padding: 0 12px;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+.pill-divider {
+  width: 1px;
+  height: 24px;
+  background-color: #d9d9d9;
+}
+
+.action-pill-btn {
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 18px;
+  padding: 0 16px;
+  height: 36px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-pill-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.action-pill-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Description Box --- */
+.description-box {
+  background-color: #f2f2f2;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.views-date {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* --- Suggested Videos (Right Sidebar) --- */
+.suggested-video-card {
+  display: flex;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.suggested-thumbnail-wrapper {
+  position: relative;
+  width: 168px;
+  height: 94px;
+  flex-shrink: 0;
+}
+
+.suggested-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.suggested-details {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4px;
+}
+
+.suggested-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.2rem;
+  max-height: 2.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.suggested-channel, .suggested-meta {
+  font-size: 12px;
+  color: #606060;
+  margin-bottom: 2px;
+}
+
+/* --- Comment Section Styling --- */
+.comments-container h3 {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.comment-form {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.user-avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-input-line {
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    padding: 8px 0;
+    font-size: 14px;
+    transition: border-bottom 0.2s;
+}
+
+.comment-input-line:focus {
+    outline: none;
+    border-bottom: 2px solid #0f0f0f;
+}
+
+.comment-submit-btn {
+    background-color: #3ea6ff;
+    color: white; /* Changed to Blue like YouTube */
+    border: none;
+    padding: 8px 16px;
+    border-radius: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.comment-thread {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.comment-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.comment-header {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+}
+
+.comment-author {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: #606060;
+}
+
+.delete-comment-btn {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    color: #606060;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.delete-comment-btn:hover {
+    color: #cc0000;
+}
+
+/* =========================================
+   8. CREATE CHANNEL PAGE (PDF PAGE 5 STYLE)
+   ========================================= */
+
+/* The Modal Container */
+.create-channel-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Centers it vertically */
+}
+
+/* The Card Itself */
+.create-channel-card {
+    background: white;
+    width: 100%;
+    max-width: 480px;
+    padding: 24px;
+    border-radius: 8px; /* Slightly rounded corners */
+    text-align: center;
+    /* Optional: Add shadow if you want it to pop */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+}
+
+.create-channel-card h2 {
+    font-size: 24px;
+    font-weight: 500; /* Regular weight, not bold */
+    margin-bottom: 32px;
+    color: #0f0f0f;
+    text-align: left; /* Title aligns left */
+}
+
+/* Avatar Section */
+.avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-preview {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+}
+
+.select-pic-btn {
+    background: none;
+    border: none;
+    color: #065fd4; /* YouTube Blue */
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Inputs */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.input-wrapper {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 12px;
+    text-align: left;
+}
+
+.material-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #0f0f0f;
+}
+
+/* Terms Text */
+.terms-text {
+    font-size: 12px;
+    color: #606060;
+    text-align: left;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+/* Buttons */
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.cancel-text-btn {
+    background: none;
+    border: none;
+    color: #065fd4;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px 16px;
+}
+
+.create-channel-btn {
+    background-color: transparent;
+    color: #065fd4;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px 16px;
+}
+
+.create-channel-btn:hover {
+    background-color: #def1ff; /* Light blue hover */
+    border-radius: 4px;
+}
+
+/* --- Updates for Dashboard Layout --- */
+.dashboard-content {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.upload-section {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+}
+
+.upload-form input, .upload-form textarea {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.upload-form button {
+    background-color: #065fd4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.video-list-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* =========================================
+   9. CREATE CHANNEL MODAL (PDF STYLE)
+   ========================================= */
+
+/* Dark Overlay Background */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* The White Card */
+.create-channel-modal {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 24px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: #0f0f0f;
+    text-align: left;
+}
+
+/* Avatar Circle */
+.avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.select-pic-link {
+    background: none;
+    border: none;
+    color: #3ea6ff; /* YouTube Blue */
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Form Inputs */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.modal-input-group {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    transition: border 0.2s;
+}
+
+.modal-input-group:focus-within {
+    border: 2px solid #3ea6ff;
+    padding: 9px; /* Adjust padding to prevent shift */
+}
+
+.modal-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #0f0f0f;
+}
+
+/* Footer Text */
+.modal-terms {
+    font-size: 12px;
+    color: #606060;
+    text-align: left;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.link-blue {
+    color: #3ea6ff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Buttons */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-cancel {
+    background: transparent;
+    border: none;
+    color: #3ea6ff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-cancel:hover {
+    background-color: #f2f8ff;
+}
+
+.btn-create {
+    background: transparent;
+    border: none;
+    color: #3ea6ff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-create:hover {
+    background-color: #f2f8ff;
+}
+
+/* Existing Dashboard Styles cleanup */
+.upload-btn {
+    background-color: #065fd4;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* =========================================
+   10. NOTIFICATION POPUP (Bombas Style)
+   ========================================= */
+
+/* The Background Overlay */
+.notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000; /* Ensure it sits on top of everything */
+    backdrop-filter: blur(2px); /* Slight blur for modern look */
+}
+
+/* The White Card */
+.notification-card {
+    background: white;
+    width: 90%;
+    max-width: 550px; /* Wider card like the example */
+    padding: 40px;
+    border-radius: 4px; /* Sharper corners like the example */
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* The 'X' Close Button */
+.close-icon-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #555;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-icon-btn:hover {
+    color: #000;
+}
+
+/* Title Text (Dark Blue) */
+.notification-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #1e3a8a; /* Deep Blue from the image */
+}
+
+/* Message Text */
+.notification-message {
+    font-size: 16px;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* The Main Blue Button */
+.notification-btn {
+    background-color: #1e3a8a; /* Deep Blue */
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border: 2px solid white;
+    margin: 5px;
+    border-radius: 10px; /* Slight radius */
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+.notification-btn:hover {
+    background-color: #152c6e; /* Darker blue on hover */
+}
+
+/* --- Action Buttons Container --- */
+.video-item-actions {
+    display: flex;
+    gap: 10px; /* Space between Edit and Delete */
+    align-items: center;
+}
+
+/* --- Blue Edit Button --- */
+.edit-btn {
+    background-color: #065fd4; /* YouTube Blue */
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Bigger padding */
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+    background-color: #0552b5;
+}
+
+/* --- Red Delete Button --- */
+.delete-btn {
+    background-color: #ffe6e6; /* Light Red background */
+    color: #cc0000;           /* Red text */
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.delete-btn:hover {
+    background-color: #ffcccc;
+}
+
+/* =========================================
+   11. COMMENT EDIT STYLES
+   ========================================= */
+
+.comment-actions-row {
+    margin-top: 8px;
+    display: flex;
+    gap: 12px;
+}
+
+.action-text-btn {
+    background: none;
+    border: none;
+    color: #606060;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+}
+
+.action-text-btn:hover {
+    color: #3ea6ff; /* YouTube Blue on hover */
+}
+
+/* Edit Mode Container */
+.edit-mode-container {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.edit-comment-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc; /* Basic border */
+    border-bottom: 2px solid #0f0f0f; /* Focus line */
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.edit-actions-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.edit-action-btn {
+    padding: 8px 16px;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.edit-action-btn.cancel {
+    background-color: transparent;
+    color: #0f0f0f;
+}
+
+.edit-action-btn.cancel:hover {
+    background-color: #e5e5e5;
+}
+
+.edit-action-btn.save {
+    background-color: #065fd4;
+    color: white;
+}
+
+.edit-action-btn.save:hover {
+    background-color: #0552b5;
 }

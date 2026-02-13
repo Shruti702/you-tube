@@ -148,6 +148,7 @@ const VideoPlayer = () => {
 
   //Prevents rendering if data hasn't loaded yet.
   if (!video) return <div style={{padding: '20px'}}>Loading...</div>;
+  console.log("React is trying to play this exact URL:", video.videoUrl);
 
   return (
     <div className="video-page-layout">
@@ -155,10 +156,12 @@ const VideoPlayer = () => {
       <div className="video-primary-column">
         <div className="video-wrapper">
             <video 
+                key={video._id}
                 className="video-frame" 
                 controls 
                 autoPlay 
-                src={video.videoUrl} 
+                muted
+                src={video.videoUrl}
                 poster={video.thumbnailUrl} 
             />
         </div>

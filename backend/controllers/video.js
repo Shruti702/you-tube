@@ -70,7 +70,7 @@ export const seedVideos = async (req, res) => {
                 uploader: "CodeMaster",
                 views: 15200,
                 likes: 1023,
-                videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 title: "MERN Stack Crash Course",
@@ -80,7 +80,7 @@ export const seedVideos = async (req, res) => {
                 uploader: "DevGuru",
                 views: 20500,
                 likes: 500,
-                videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
             }
         ];
         //Inserts multiple documents at once.

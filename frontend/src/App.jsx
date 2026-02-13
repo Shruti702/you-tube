@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import VideoPlayer from "./pages/VideoPlayer";
-import Channel from "./pages/Channel";
+import Channel  from "./pages/Channel";
 
 //Updates Layout to manage Sidebar state.
 const Layout = () => {

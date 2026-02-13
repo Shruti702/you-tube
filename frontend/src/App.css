@@ -214,3 +214,92 @@ a {
 .video-details p:hover {
   color: var(--yt-black);
 }
+
+/*Styling of the sidebar menu.*/
+.sidebar {
+  width: 240px;
+  background-color: white;
+  height: calc(100vh - 56px); /* Full height minus navbar */
+  position: sticky;
+  top: 56px;
+  overflow-y: auto;
+  padding: 12px;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Sidebar Items */
+.sidebar-section {
+  margin-bottom: 12px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #0f0f0f;
+}
+
+.sidebar-item:hover {
+  background-color: #f2f2f2;
+}
+
+.sidebar-item.active {
+  background-color: #f2f2f2;
+  font-weight: 500;
+}
+
+.sidebar-item.active:hover {
+  background-color: #e5e5e5;
+}
+
+.sidebar-icon-container {
+    width: 24px;
+    margin-right: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar-icon {
+    font-size: 20px; /* Controls the size of FontAwesome icons */
+    color: #0f0f0f;
+}
+
+/* Update Navbar Menu Items for spacing */
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* More space between Bell, Create, User */
+}
+
+.sidebar-divider {
+  height: 1px;
+  background-color: #e5e5e5;
+  margin: 12px 0;
+}
+
+.sidebar-title {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+}
+
+/* --- Menu Button in Navbar --- */
+.menu-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-btn:hover {
+  background-color: #f2f2f2;
+}
